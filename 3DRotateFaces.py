@@ -11,7 +11,7 @@ def rotate(x, y, r):
     return x * c - y * s, x * s + y * c
 
 class Shape:
-    def __init__(self, x=True, y=True, z=True, colour="lightblue",border="black"):
+    def __init__(self, x=True, y=True, z=True, colour="lightblue",border="black",size = 800):
         self.counter = 0
         self.t = turtle.Turtle()
         self.t.ht()
@@ -20,6 +20,7 @@ class Shape:
         self.Rx = x
         self.Ry = y
         self.Rz = z
+        self.Size = size
 
     def draw(self):
         faces_with_depth = []
@@ -41,7 +42,7 @@ class Shape:
                 z += 5
                 center_z += z / len(edge)  # Average z-coordinate for this face
 
-                f = 800 / z  # f gives size/distance (smaller value = smaller cube)
+                f = self.Size / z  # f gives size/distance (smaller value = smaller cube)
 
                 sx, sy = x * f, y * f
                 points.append((sx, sy))
@@ -86,6 +87,17 @@ class IcoSphere(Shape):
 
 shapes=[]
 ###################################################
+```
+Shape properties:
+X   \
+Y   |  Bool foe rotation axis ( default is true)
+Z   /
+
+colour : the colour of the Faces of the shape ( default is lightblue)
+border : the colour if the edges of the faces (default is black)
+size   : size of Shape (default is 800)
+
+```
 shapes.append(IcoSphere(border="black",colour="red"))
 window.bgcolor("black")
 rotateSpeed = 1/1000
