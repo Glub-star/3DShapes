@@ -3,8 +3,8 @@ from math import sin, cos
 
 window = turtle.Screen()
 window.setup(600, 600)
-window.tracer(0)
-window.bgcolor("grey")
+window.tracer(0) # Disable animations of turtle
+window.bgcolor("black") # window colour
 
 def rotate(x, y, r):
     s, c = sin(r), cos(r)
@@ -42,8 +42,7 @@ class Shape:
                 z += 5
                 center_z += z / len(edge)  # Average z-coordinate for this face
 
-                f = self.Size / z  # f gives size/distance (smaller value = smaller cube)
-
+                f = self.Size / z  # f gives size/distance
                 sx, sy = x * f, y * f
                 points.append((sx, sy))
 
@@ -99,7 +98,7 @@ size   : size of Shape (default is 800)
 
 ```
 shapes.append(IcoSphere(border="black",colour="red"))
-window.bgcolor("black")
+window.bgcolor("black") # background window colour
 rotateSpeed = 1/1000
 ######################################################
 while True:
